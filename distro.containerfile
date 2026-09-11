@@ -2,8 +2,8 @@ ARG HELIX_IMAGE=ghcr.io/sebag90/helix:latest
 ARG DEVENV_IMAGE=ghcr.io/sebag90/devenv:latest
 
 FROM ${HELIX_IMAGE} as helix
-FROM ${DEVENV_IMAGE} as nix
-FROM quay.io/fedora-ostree-desktops/silverblue:44
+# FROM quay.io/fedora-ostree-desktops/silverblue:44
+FROM quay.io/fedora-ostree-desktops/cosmic-atomic:44
 
 RUN --mount=type=tmpfs,dst=/tmp \
 	wget --no-hsts $(curl -s https://api.github.com/repos/cormullion/juliamono/releases/latest | \
@@ -12,12 +12,11 @@ RUN --mount=type=tmpfs,dst=/tmp \
 	&& tar -xzf /tmp/JuliaMono.tar.gz -C /usr/share/fonts/JuliaMono/ \
     && fc-cache -fv
 
-RUN dnf install -y lsd \
+RUN dnf install -y lsd fish \
 	&& dnf clean all
 
-COPY --from=helix /usr/local/bin/hx /usr/local/bin/hx
-COPY --from=helix /usr/local/share/helix /usr/local/share/helix
-COPY --from=nix /nix /nix
+COPY --from=helix /usr/local/bin/hx /usr/bin/hx
+COPY --from=helix /usr/local/share/helix /usr/share/helix
 
-ENV HELIX_RUNTIME=/usr/local/share/helix/runtime
+ENV HELIX_RUNTIME=/usr/share/helix/runtime
 RUN ["bootc", "container", "lint"]
