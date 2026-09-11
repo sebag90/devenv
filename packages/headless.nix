@@ -40,6 +40,7 @@ with pkgs; [
   fish-lsp
   systemd-lsp
   marksman
+  superhtml
 
   # programming tools
   podman
