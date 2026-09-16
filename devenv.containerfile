@@ -1,5 +1,6 @@
 ARG PKGS_IMAGE=ghcr.io/sebag90/devenv-pkgs:latest
 ARG HELIX_IMAGE=ghcr.io/sebag90/helix:latest
+ARG GOOSEBUTILS_IMAGE=ghcr.io/sebag90/goosebutils:latest
 
 FROM docker.io/alpine/git:latest as config
 WORKDIR /workspace
@@ -9,6 +10,7 @@ RUN git clone --depth 1 https://github.com/sebag90/dotfiles.git
 
 FROM ${PKGS_IMAGE} AS pkgs
 FROM ${HELIX_IMAGE} AS helix
+FROM ${GOOSEBUTILS_IMAGE} AS goosebutils
 
 FROM fedora AS final
 
@@ -19,6 +21,7 @@ ARG VENV_DIR=/home/dev/venv
 COPY --from=pkgs /home/linuxbrew/.linuxbrew /home/linuxbrew/.linuxbrew
 COPY --from=helix /usr/local/bin/hx /usr/local/bin/hx
 COPY --from=helix /usr/local/share/helix /usr/local/share/helix
+COPY --from=goosebutils /usr/local/bin/ /usr/local/bin/
 COPY --from=config /workspace/dotfiles/config $HOME_DIR/.config
 
 ENV PATH=$VENV_DIR/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/bin:$PATH \
