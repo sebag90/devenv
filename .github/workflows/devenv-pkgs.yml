@@ -1,4 +1,4 @@
-name: Build and Push devenv-nix-base Container
+name: Build and Push devenv-pkgs Container
 
 on:
   workflow_dispatch:
@@ -37,11 +37,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: devenv-nix-base.containerfile
+          file: devenv-pkgs.containerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ steps.repo_owner.outputs.owner }}/devenv-nix-base:latest
+            ghcr.io/${{ steps.repo_owner.outputs.owner }}/devenv-pkgs:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -57,6 +57,6 @@ jobs:
       - name: Cleanup Old GHCR Images
         uses: step-security/ghcr-cleanup-action@v1
         with:
-          packages: 'devenv-nix-base'
+          packages: 'devenv-pkgs'
           keep-n-tagged: 3
           token: ${{ secrets.GHCR_PAT || secrets.GITHUB_TOKEN }}
