@@ -2,8 +2,8 @@ ARG HELIX_IMAGE=ghcr.io/sebag90/helix:latest
 ARG DEVENV_IMAGE=ghcr.io/sebag90/devenv:latest
 
 FROM ${HELIX_IMAGE} as helix
-# FROM quay.io/fedora-ostree-desktops/silverblue:44
-FROM quay.io/fedora-ostree-desktops/cosmic-atomic:44
+FROM quay.io/fedora-ostree-desktops/silverblue:44
+# FROM quay.io/fedora-ostree-desktops/cosmic-atomic:44
 
 RUN --mount=type=tmpfs,dst=/tmp \
 	wget --no-hsts $(curl -s https://api.github.com/repos/cormullion/juliamono/releases/latest | \
