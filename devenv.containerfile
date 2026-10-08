@@ -44,6 +44,7 @@ RUN dnf install -y git wl-clipboard openssh-clients which && dnf clean all
 
 # install pi coding agent and aws cli
 RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent \
+    && pi install npm:pi-agent-web-access \
     && pi install npm:pi-ponytail \
     && curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
 
