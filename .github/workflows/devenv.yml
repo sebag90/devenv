@@ -1,6 +1,8 @@
 name: Build and Push devenv Container
 
 on:
+  schedule:
+    - cron: '0 3 * * 1'  # weekly, Monday 03:00 UTC
   workflow_dispatch:
 
 permissions:
