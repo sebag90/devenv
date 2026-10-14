@@ -3,13 +3,9 @@ curl
 bat
 lsd
 unzip
-serpl
 glow
-usbutils
 btop
-ctop
 ouch
-ripgrep
 gdu
 stow
 zellij
@@ -18,31 +14,20 @@ yazi
 git-delta
 jq
 
-python-lsp-server
-just-lsp
-texlab
 dockerfile-language-server
 docker-compose-langserver
 gopls
-yaml-language-server
-fish-lsp
-systemd-lsp
-marksman
 prettier
 
 podman
 docker-compose
-podlet
-dive
 git
 lazygit
 just
 uv
-ty
 pyrefly
 cookiecutter
 prek
-pre-commit
 ruff
 go
 nodejs
