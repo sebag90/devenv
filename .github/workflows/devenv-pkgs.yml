@@ -2,7 +2,7 @@ name: Build and Push devenv-pkgs Container
 
 on:
   schedule:
-     - cron: '0 1 * * 1'  # weekly, Monday 01:00 UTC
+     - cron: '0 1 * * 7'  # weekly, Sunday 01:00 UTC
   workflow_dispatch:
 
 permissions:
