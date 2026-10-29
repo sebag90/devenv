@@ -2,7 +2,7 @@ name: Build and Push sebos Container
 
 on:
   schedule:
-    - cron: '0 4 * * 1'  # weekly, Monday 04:00 UTC
+    - cron: '0 4 * * 7'  # weekly, Monday 04:00 UTC
   workflow_dispatch:
 
 permissions:
