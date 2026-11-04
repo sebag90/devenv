@@ -48,9 +48,11 @@ RUN curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash \
     && /home/dev/.local/bin/pig install npm:pi-web-access@0.31.0 \
     && /home/dev/.local/bin/pig install npm:pi-ponytail
 
-# any uid must be able to write to the home dir (podman --user)
+# any uid must be able to write to the home dir and work dir (podman --user)
 RUN uv venv $VENV_DIR \
-    && chmod -R 777 $HOME_DIR
+    && chmod -R 777 $HOME_DIR \
+    && mkdir -p $WORK_DIR \
+    && chmod 777 $WORK_DIR
 
 WORKDIR $WORK_DIR
 ENTRYPOINT ["fish"]
