@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon.svg" alt="devshell logo" width="140">
+</p>
+
 # Steps
 
 ## Activate flake and nix command
