@@ -1,4 +1,4 @@
-name: Build and Push devenv Container
+name: Build and Push devshell Container
 
 on:
   schedule:
@@ -39,11 +39,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: devenv.containerfile
+          file: devshell.containerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ steps.repo_owner.outputs.owner }}/devenv:latest
+            ghcr.io/${{ steps.repo_owner.outputs.owner }}/devshell:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -59,6 +59,6 @@ jobs:
       - name: Cleanup Old GHCR Images
         uses: step-security/ghcr-cleanup-action@v1
         with:
-          packages: 'devenv'
+          packages: 'devshell'
           keep-n-tagged: 3
           token: ${{ secrets.GHCR_PAT || secrets.GITHUB_TOKEN }}

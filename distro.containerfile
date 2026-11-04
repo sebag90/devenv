@@ -1,5 +1,5 @@
 ARG HELIX_IMAGE=ghcr.io/sebag90/helix:latest
-ARG DEVENV_IMAGE=ghcr.io/sebag90/devenv:latest
+ARG DEVSHELL_IMAGE=ghcr.io/sebag90/devshell:latest
 
 FROM ${HELIX_IMAGE} as helix
 FROM quay.io/fedora-ostree-desktops/silverblue:44

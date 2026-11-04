@@ -1,4 +1,4 @@
-ARG PKGS_IMAGE=ghcr.io/sebag90/devenv-pkgs:latest
+ARG PKGS_IMAGE=ghcr.io/sebag90/pkgs:latest
 ARG HELIX_IMAGE=ghcr.io/sebag90/helix:latest
 ARG GOOSEBUTILS_IMAGE=ghcr.io/sebag90/goosebutils:latest
 
